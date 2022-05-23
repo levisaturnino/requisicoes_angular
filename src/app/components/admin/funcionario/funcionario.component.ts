@@ -17,14 +17,15 @@ export class FuncionarioComponent implements OnInit {
 
   funcionarios$!: Observable<Funcionario[]> ;
   departamentos$!: Observable<Departamento[]>;
-  departamentoFiltro: string| undefined;
+  departamentoFiltro!: string;
   edit: boolean| undefined;
   displayDialogFuncionario: boolean| undefined;
   form!: FormGroup;
 
   //Para upload da foto
   @ViewChild('inputFile', { static: false }) inputFile: ElementRef | undefined;
-  uploadPercent!: Observable<number| undefined | null>;
+
+  uploadPercent!: Observable<number| undefined>;
   downloadURL: Observable<string> | undefined;
   task: AngularFireUploadTask| undefined;
   complete: boolean| undefined;
@@ -111,9 +112,7 @@ export class FuncionarioComponent implements OnInit {
         })
       });
     });
-    //this?.uploadPercent = this.task.percentageChanges();
+    this.uploadPercent = this.task.percentageChanges();
     this.inputFile!.nativeElement.value = '';
   }
-
-
 }

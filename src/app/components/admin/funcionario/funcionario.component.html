@@ -10,7 +10,7 @@
 
       <ng-select [(ngModel)]="departamentoFiltro">
         <ng-option [value]="'TODOS'">TODOS</ng-option>
-        <ng-option *ngFor="let departamento of departamentos$ | async" [value]="departamento.nome">{{departamento.nome}}
+        <ng-option *ngFor="let departamento of departamentos$ | async" [value]="departamento?.nome">{{departamento?.nome}}
         </ng-option>
       </ng-select>
 
@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let funcionario of funcionarios$ | async">
+          <tr *ngFor="let funcionario of funcionarios$ | async | filter :  departamentoFiltro">
             <td class="text-center">
               <img [src]="funcionario.foto || '/assets/imgs/no-image.png'" style="width: 100px" class="img-fluid">
             </td>
@@ -61,7 +61,7 @@
 
 <p-dialog header="Dados do funcionário" [style]="{ width: '80vw' }" [contentStyle]="{'overflow':'visible'}"
   [(visible)]="displayDialogFuncionario" [responsive]="true" [modal]="true">
-  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="form!.value">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="form.value">
     <form [formGroup]="form" class="p-fluid p-formgrid p-grid">
       <div class="p-field p-col-12 p-md-6">
         <label for="nome">Nome*:</label>
@@ -91,12 +91,12 @@
       </div>
     </form>
   </div>
-  <div *ngIf="form!.controls['nome'].errors || form!.controls['email'].errors || form!.controls['departamento'].errors "
+  <div *ngIf="form.controls['nome'].errors || form.controls['email'].errors || form.controls['departamento'].errors "
     class="text-warning  ">*Preenchimento Obrigatório</div>
 
     <div class="p-d-flex p-jc-end">
-      <button [disabled]="!form!.valid" type="button" class="btn btn-primary " (click)="save()">
-        <i class="fas fa-check-circle"></i> {{edit ? 'Atualizar' : 'Salvar'}}
+      <button [disabled]="!form.valid" type="button" class="btn btn-primary " (click)="save()">
+        <i class="fa fa-check-circle"></i> {{edit ? 'Atualizar' : 'Salvar'}}
       </button>
     </div>
 
