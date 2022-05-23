@@ -15,7 +15,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
 
   get(id: string): Observable<T> {
     let doc = this.ref.doc<T>(id);
-    return doc.get().pipe(map(snapshot => 
+    return doc.get().pipe(map(snapshot =>
       this.docToClass(snapshot)));
   }
 
@@ -27,7 +27,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
     let id = item.id;
     if (!item)
       return Promise.resolve()
-      
+
     let obj: any = null ;
 
     if (item instanceof this.type)
@@ -44,7 +44,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
       })
   }
 
-  delete(id: string):Promise<void> {
+  delete(id?: string):Promise<void> {
     return this.ref.doc(id).delete();
   }
 

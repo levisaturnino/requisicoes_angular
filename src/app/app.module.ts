@@ -1,5 +1,4 @@
 import { environment } from './../environments/environment';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +12,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { MenuComponent } from './components/admin/menu/menu.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FilterDepartamentoPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -20,17 +21,16 @@ import { MenuComponent } from './components/admin/menu/menu.component';
     AppComponent,
     LoginComponent,
     MenuComponent
-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     FormsModule,
-    SweetAlert2Module,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
