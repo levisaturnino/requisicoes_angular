@@ -1,16 +1,20 @@
 import { Model } from "../core/model";
 import { Departamento } from "./departamento.model";
 import { Funcionario } from "./funcionario.model";
-import { Movimentacao } from "./movimentacao.model";
 
-export class Requisicao extends Model{
+export class Requisicao extends Model {
+  solicitante?: Funcionario;
+  dataAbertura: any;
+  ultimaAtualizacao: any;
+  descricao?: string;
+  status?: string;
+  destino?: Departamento;
+  movimentacoes!: Movimentacao[] | null | undefined;
+}
 
-    solicitante?: Funcionario;
-    dataAbertura: any; 
-    ultimaAtualizacao: any; 
-    descricao?: string;
-    status?: string;
-    destino?: Departamento; 
-    movimentacoes?: Movimentacao[];
-    
+export class Movimentacao extends Model {
+  funcionario?: Funcionario;
+  dataHora: any;
+  status?: string
+  descricao?: string;
 }

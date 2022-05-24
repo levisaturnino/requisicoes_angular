@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class AuthenticationService {
 
-
   private user: Observable<firebase.User | null>;
 
   constructor(private afAuth: AngularFireAuth) {
@@ -19,7 +18,7 @@ export class AuthenticationService {
     return this.afAuth.sendPasswordResetEmail(email)
   }
 
-  authUser(): Observable<firebase.User | null> {
+   authUser(): Observable<firebase.User | null> {
     return this.user;
   }
 

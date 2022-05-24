@@ -1,13 +1,13 @@
-import { PainelComponent } from './painel.component';
+import { ListaComponent } from './lista.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: PainelComponent }
+  {path: '', component: ListaComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PainelRoutingModule { }
+export class ListaRoutingModule { }
